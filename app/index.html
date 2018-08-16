@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Authentication over Ethereum </title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link href="./app/font/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="row p-4">
+        <div class="col-6">
+          <h2>Authunter</h2>
+        </div>
+        <div class="col-6">
+          Authentication Over Ethereum
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <a class="navbar-brand" href="/index.html">Authunter</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <span id="navText" class="navbar-text">
+      <span class="afterLogin mr-2"><span class="oi oi-person mr-1"></span>Logged</span>
+      <a class="afterLogin" href="#" onclick="logout()">Logout</a>
+    </span>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mt-3">
+        <div class="card-header">
+          Sending a proposal
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="preference">Preference</label>
+            <input class="form-control" type="text" id="preference" name="preference" placeholder="Preference"/>
+          </div>
+          <div class="form-group">
+            <label for="Period">Period</label>
+            <input class="form-control" type="number" id="period" name="period" placeholder="Period" />
+          </div>
+          <button type="button" onclick="proposeNewPreference()" class="btn btn-primary">Propose</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mt-3">
+        <div class="card-header">
+          <span>Current proposal</span>
+          <div class="float-right">
+            <a href="#" onclick="vote(true)">
+              <span class="oi oi-arrow-top" style="color:green"></span>
+            </a>
+            <a href="#" onclick="vote(false)">
+              <span class="oi oi-arrow-bottom" style="color:red"></span>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row border-bottom mb-2">
+            <div class="col-6"><strong>Ends up in </strong></div>
+            <div class="col-6" id="proposal0"></div>
+          </div>
+          <div class="row border-bottom mb-2">
+            <div class="col-6"><strong>Preference Name </strong></div>
+            <div class="col-6" id="proposal1"></div>
+          </div>
+            <div class="row border-bottom mb-2">
+            <div class="col-6"><strong>Count of UpVotes </strong></div>
+            <div class="col-6" id="proposal2"></div>
+          </div>
+          <div class="row border-bottom mb-2">
+            <div class="col-6"><strong>Count of downVotes </strong></div>
+            <div class="col-6" id="proposal3"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+<div class="row">
+        <div class="col-md-6">
+      <div class="card mt-3">
+        <div class="card-header">
+          <span><strong>Your Preference List</strong></span>
+        </div>
+        <div class="card-body" id ="prefList">
+        
+
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+<!--
+  <div class="row">
+    <div class="col-md-6">
+      <input type="text" id="randomStr" value="m123ji1" />
+      <a href="#" onclick="signServerMsg()" class="btn btn-primary">Sign</a>
+      <div id="address"></div>
+      <div id="msg"></div>
+      <div id="signature"></div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Show time</h1>
+      <input type="text" id="hash" placeholder="hash"/>
+      <input type="text" id="signed" placeholder="signed"/>
+      <a href="#" onclick="showTime()" class="btn btn-primary">Recover</a>
+    </div>
+  </div>
+-->
+</div>
+</body>
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="./app.js"></script>
+</html>
